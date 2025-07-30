@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="TestQuest - Тестовое приложение на Preact с SSR" />
+    <meta name="keywords" content="testquest, preact, ssr, быстрый, легкий" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="TestQuest - Тестовое приложение" />
+    <meta property="og:description" content="Быстрое и современное тестовое приложение с Server-Side Rendering" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Preload критичных ресурсов -->
+    <link rel="preload" href="/src/style.css" as="style" />
+    <link rel="preload" href="/src/styles/shared.css" as="style" />
+    
+    <!-- PWA манифест -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#007bff" />
+    
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="TestQuest" />
+    
+    <title>TestQuest - Тестовое приложение</title>
+  </head>
+  <body>
+    <!-- SSR контент будет вставлен сюда -->
+    <div id="app" data-preact-root><!--preact-ssr-outlet--></div>
+    
+    <!-- Начальные данные от сервера -->
+    <!--preact-ssr-data-->
+    
+    <!-- Клиентский скрипт -->
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Telegram WebApp скрипт (загружается асинхронно) -->
+    <script>
+      // Проверяем, запущены ли мы в Telegram
+      if (window.location.href.includes('tgWebAppPlatform')) {
+        const script = document.createElement('script')
+        script.src = 'https://telegram.org/js/telegram-web-app.js'
+        script.async = true
+        document.head.appendChild(script)
+      }
+    </script>
+    
+    <!-- Индикатор загрузки для медленных соединений -->
+    <noscript>
+      <style>
+        .no-js-message {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          font-family: system-ui, sans-serif;
+          text-align: center;
+          padding: 20px;
+        }
+      </style>
+      <div class="no-js-message">
+        <div>
+          <h1>⚡ TestQuest</h1>
+          <p>Для работы приложения необходим JavaScript</p>
+          <p>Пожалуйста, включите JavaScript в браузере</p>
+        </div>
+      </div>
+    </noscript>
+  </body>
+</html>

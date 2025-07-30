@@ -1,0 +1,31 @@
+{
+  "name": "testquest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "dev:client": "vite",
+    "build": "tsc",
+    "build:client": "vite build",
+    "start": "tsc && node build/server.js"
+  },
+  "author": "globexit",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/cors": "^11.0.1",
+    "@preact/preset-vite": "^2.10.2",
+    "@preact/signals": "^2.2.1",
+    "fastify": "^5.4.0",
+    "preact": "^10.27.0",
+    "preact-render-to-string": "^6.5.13",
+    "preact-router": "^4.1.2",
+    "vite": "^7.0.6",
+    "vite-plugin-compression": "^0.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.7",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  }
+}
